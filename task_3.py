@@ -1,5 +1,6 @@
 # imports 
 from multiprocessing import Process,Manager
+import time
 
 # Test and Basic Functions 
 
@@ -17,16 +18,16 @@ def name_in_text(names,text,rdic):
 # Sorting Algorithms
 
 if __name__ == '__main__':
-    r1 = open(("dataset/task1_3_names.txt"),"r")
+    r1 = open(("dataset/task1_3_names.txt"),"r") # dataset for words to look for (in this case names)
     names = r1.read()
     r1.close()
-    r2 = open(("dataset/task1_3_text.txt"),"r",errors="ignore")
+    r2 = open(("dataset/task1_3_text.txt"),"r",errors="ignore") # dataset for text looking through
     text = r2.read()
     r2.close()
 
     man = Manager()
     nc = man.dict()
-    new_text = ''.join(filter(remchars,text))
+    new_text = ''.join(filter(remchars,text)) # remove invalid characters from text
     name_list = names.split("\n")
     name_list = list(map(str.lower,name_list))
     text_list = new_text.split(" ")
